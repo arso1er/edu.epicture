@@ -2,24 +2,16 @@ import axios from "axios";
 import { Button, Text, View, FlatList } from "react-native";
 import { Card, ActivityIndicator, Colors } from "react-native-paper";
 import { globalStyles } from "../styles/global";
-// import { privateConfig } from "../config/private";
 import { useEffect, useState } from "react";
 import { IMGUR_API_CLIENT_ID } from "@env";
 
 export default function Home(props) {
   const { navigation } = props;
-  // console.log("====================================");
-  // console.log(privateConfig.IMGUR_API_CLIENT_ID);
-  // console.log("====================================");
-
-  // const { user } = useContext(UserContext);
-  // {user ? <Text>{user.name}</Text> : null}
 
   const [topImages, setTopImages] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    // axios.get(`https://api.imgur.com/3/gallery/search/top/day?q=a&q_type=jpg`)
     axios({
       method: "get",
       url: "https://api.imgur.com/3/gallery/search/top/day?q=funny&q_type=jpg",
@@ -39,7 +31,7 @@ export default function Home(props) {
         setTopImages(newImages);
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
       })
       .then(() => setLoading(false));
   }, []);
@@ -114,13 +106,3 @@ export default function Home(props) {
     </View>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     backgroundColor: "#14143f",
-//   },
-//   titleText: {
-//     fontFamily: "Nunito-Bold",
-//     fontSize: 18,
-//   },
-// });

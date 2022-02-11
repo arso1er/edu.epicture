@@ -15,6 +15,7 @@ import CustomNavigationBar from "./components/CustomNavigationBar";
 import HomeScreen from "./screens/home";
 import PhotoDetailsScreen from "./screens/photoDetails";
 import LoginScreen from "./screens/login";
+import SearchScreen from "./screens/search";
 
 import { UserProvider } from "./components/context/UserContext";
 import { GlobalSnackProvider } from "./components/shared/snack/snackContext";
@@ -53,6 +54,7 @@ export default function App() {
                 component={PhotoDetailsScreen}
               />
               <Stack.Screen name="Login" component={LoginScreen} />
+              <Stack.Screen name="Search" component={SearchScreen} />
             </Stack.Navigator>
           </NavigationContainer>
           <GlobalSnack />

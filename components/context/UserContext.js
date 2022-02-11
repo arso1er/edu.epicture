@@ -1,6 +1,14 @@
 import { createContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+export async function getAuthToken() {
+  const storageVal = await AsyncStorage.getItem("currentUser");
+  const user = JSON.parse(storageVal);
+  return user?.access_token || "?";
+
+  // return SecureStore.getItemAsync(AUTH_CLIENT_ID || "?");
+}
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {

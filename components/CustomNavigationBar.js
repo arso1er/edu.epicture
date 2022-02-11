@@ -25,7 +25,12 @@ export default function CustomNavigationBar(props) {
     <Appbar.Header>
       {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
       <Appbar.Content title={route.name} />
-      <Appbar.Action icon="magnify" onPress={() => {}} />
+      <Appbar.Action
+        icon="magnify"
+        onPress={() => {
+          navigation.navigate("Search");
+        }}
+      />
       {/* <Searchbar
         placeholder="Search"
         onChangeText={onChangeSearch}
