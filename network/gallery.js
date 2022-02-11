@@ -83,19 +83,19 @@ export async function searchGallery(query, page) {
   return res;
 }
 
-// export async function getGalleryComments(hash) {
-//   const data = new FormData();
-//   const token = await getAuthToken();
+export async function getGalleryComments(hash) {
+  // const data = new FormData();
+  const token = await getAuthToken();
 
-//   const config = {
-//     method: "get",
-//     url: `https://api.imgur.com/3/gallery/${hash}/comments/`,
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//       "Content-Type": "application/json",
-//     },
-//     data,
-//   };
-//   const ret = await axios(config);
-//   return ret.data.data;
-// }
+  const config = {
+    method: "get",
+    url: `https://api.imgur.com/3/gallery/${hash}/comments/`,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    // data,
+  };
+  const ret = await axios(config);
+  return ret.data.data;
+}

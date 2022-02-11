@@ -188,9 +188,9 @@ const BigPictureCard = ({
                 <Text style={styles.greyText}>
                   {account_url.substring(0, 17)} ·
                 </Text>
-                <TouchableOpacity onPress={() => alert("TODO")}>
+                {/* <TouchableOpacity onPress={() => alert("TODO")}>
                   <Text style={styles.follow}>follow</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
               <View style={styles.viewContainer}>
                 <Text style={styles.greyText}>{views}</Text>

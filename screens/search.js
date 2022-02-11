@@ -12,6 +12,7 @@ import { useState } from "react";
 import useFeedSearch from "../hooks/useFeedSearch";
 import PictureCard from "../components/PictureCard/BigPictureCard";
 import { ActivityIndicator, Colors } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
   // container: {
@@ -67,6 +68,8 @@ const SearchBar = ({ onValidate }) => {
 };
 
 export default function Search() {
+  const navigation = useNavigation();
+
   const {
     loading,
     images,
@@ -100,8 +103,8 @@ export default function Search() {
             renderItem={({ item }) => (
               <PictureCard
                 onPress={() => {
-                  console.log(item);
-                  // navigation.navigate("PictureScreen", { data: item });
+                  // console.log(item);
+                  navigation.navigate("PhotoDetails", { data: item });
                 }}
                 id={item.id}
                 width={item.width}
