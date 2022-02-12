@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#33353a",
     alignItems: "center",
     justifyContent: "flex-start",
-    marginHorizontal: 15,
+    // marginHorizontal: 15,
     marginTop: 20,
     borderRadius: 5,
     overflow: "hidden",
