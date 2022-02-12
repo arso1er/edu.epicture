@@ -61,6 +61,13 @@ export default function CustomNavigationBar(props) {
                 <Menu.Item
                   onPress={() => {
                     closeMenu();
+                    navigation.navigate("MyPosts");
+                  }}
+                  title="My photos"
+                />
+                <Menu.Item
+                  onPress={() => {
+                    closeMenu();
                     navigation.navigate("Favorites");
                   }}
                   title="My favorites"

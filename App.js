@@ -17,6 +17,7 @@ import PhotoDetailsScreen from "./screens/photoDetails";
 import LoginScreen from "./screens/login";
 import SearchScreen from "./screens/search";
 import FavoritesScreen from "./screens/favorites";
+import MyPostsScreen from "./screens/myPosts";
 
 import UploadScreen from "./screens/upload";
 import CameraScreen from "./screens/UploadScreens/Camera";
@@ -61,6 +62,7 @@ export default function App() {
               <Stack.Screen name="Login" component={LoginScreen} />
               <Stack.Screen name="Search" component={SearchScreen} />
               <Stack.Screen name="Favorites" component={FavoritesScreen} />
+
               <Stack.Screen
                 name="Upload"
                 options={{ title: "New post" }}
@@ -70,6 +72,12 @@ export default function App() {
               <Stack.Screen
                 name="PostDraftScreen"
                 component={PostDraftScreen}
+              />
+
+              <Stack.Screen
+                name="MyPosts"
+                options={{ title: "My posts" }}
+                component={MyPostsScreen}
               />
             </Stack.Navigator>
           </NavigationContainer>
