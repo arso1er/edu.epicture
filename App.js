@@ -18,6 +18,10 @@ import LoginScreen from "./screens/login";
 import SearchScreen from "./screens/search";
 import FavoritesScreen from "./screens/favorites";
 
+import UploadScreen from "./screens/upload";
+import CameraScreen from "./screens/UploadScreens/Camera";
+import PostDraftScreen from "./screens/UploadScreens/PostDraft";
+
 import { UserProvider } from "./components/context/UserContext";
 import { GlobalSnackProvider } from "./components/shared/snack/snackContext";
 import GlobalSnack from "./components/shared/snack/globalSnack";
@@ -57,6 +61,16 @@ export default function App() {
               <Stack.Screen name="Login" component={LoginScreen} />
               <Stack.Screen name="Search" component={SearchScreen} />
               <Stack.Screen name="Favorites" component={FavoritesScreen} />
+              <Stack.Screen
+                name="Upload"
+                options={{ title: "New post" }}
+                component={UploadScreen}
+              />
+              <Stack.Screen name="CameraScreen" component={CameraScreen} />
+              <Stack.Screen
+                name="PostDraftScreen"
+                component={PostDraftScreen}
+              />
             </Stack.Navigator>
           </NavigationContainer>
           <GlobalSnack />

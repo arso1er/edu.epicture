@@ -4,7 +4,7 @@ import { UserContext } from "./context/UserContext";
 import { GlobalSnackContext } from "./shared/snack/snackContext";
 
 export default function CustomNavigationBar(props) {
-  const { navigation, back, route } = props;
+  const { navigation, back, route, options } = props;
 
   const { user, logOut } = useContext(UserContext);
 
@@ -16,8 +16,10 @@ export default function CustomNavigationBar(props) {
 
   return (
     <Appbar.Header>
-      {back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
-      <Appbar.Content title={route.name} />
+      {back ? (
+        <Appbar.BackAction color="#fff" onPress={navigation.goBack} />
+      ) : null}
+      <Appbar.Content title={options?.title || route.name} />
 
       {!back ? (
         <>
@@ -49,6 +51,13 @@ export default function CustomNavigationBar(props) {
             ) : (
               <>
                 <Menu.Item title={user.account_username} disabled />
+                <Menu.Item
+                  onPress={() => {
+                    closeMenu();
+                    navigation.navigate("Upload");
+                  }}
+                  title="Upload photo"
+                />
                 <Menu.Item
                   onPress={() => {
                     closeMenu();
