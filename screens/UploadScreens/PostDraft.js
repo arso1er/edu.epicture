@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
 export default function PostDraft({ route }) {
   const navigation = useNavigation();
   const history = useNavigationState((state) => state.routes);
-  const [publicMode, setPublicMode] = useState(true);
+  const [publicMode, setPublicMode] = useState(false);
   const [matureMode, setMatureMode] = useState(false);
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(false);
