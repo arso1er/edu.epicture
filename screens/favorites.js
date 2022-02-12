@@ -60,6 +60,7 @@ export default function FavoriteScreen() {
               type={item.type}
               title={item.title}
               cardType="favorite"
+              vote={item.vote}
             />
           ))}
         </RNMasonryScroll>

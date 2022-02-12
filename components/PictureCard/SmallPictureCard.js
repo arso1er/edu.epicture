@@ -61,6 +61,7 @@ const SmallPictureCard = ({
   type,
   title,
   cardType,
+  vote,
 }) => {
   const getDimension = () => {
     const ratio = Dimensions.window.width / 2.1 / width;
@@ -95,6 +96,8 @@ const SmallPictureCard = ({
       alert(error);
     }
   };
+
+  const voted = vote === "up";
 
   return (
     <TouchableOpacity
@@ -148,8 +151,15 @@ const SmallPictureCard = ({
           ]}
         >
           <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <UpvotePicto color="#8e9094" width={20} height={20} />
-            <Text style={{ color: "#8e9094" }}>{ups} points</Text>
+            <UpvotePicto
+              stroke={voted ? "#43d1bd" : "white"}
+              color={voted ? "#43d1bd" : "transparent"}
+              width={20}
+              height={20}
+            />
+            <Text style={{ color: "#8e9094" }}>
+              {ups + (voted ? 1 : 0)} points
+            </Text>
           </View>
           <TouchableOpacity onPress={handleSuppress}>
             {cardType === "favorite" ? (
