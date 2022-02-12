@@ -5,7 +5,10 @@ import {
   StyleSheet,
   TextInput,
   FlatList,
+  Text,
 } from "react-native";
+import Modal from "react-native-modal";
+import { Picker } from "@react-native-picker/picker";
 import { AntDesign } from "@expo/vector-icons";
 import { globalStyles } from "../styles/global";
 import { useState } from "react";
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SearchBar = ({ onValidate }) => {
+const SearchBar = ({ onValidate, onFilterPress, sort, window }) => {
   const [searchString, setSearchString] = useState("");
 
   return (
@@ -55,14 +58,14 @@ const SearchBar = ({ onValidate }) => {
         blurOnSubmit
         value={searchString}
         onSubmitEditing={() => {
-          onValidate(searchString);
+          onValidate(`/${sort}/${window}|${searchString}`);
           Keyboard.dismiss();
         }}
         style={styles.titleInput}
         placeholderTextColor="#b9d3dc"
         onChangeText={(t) => setSearchString(t)}
       />
-      <AntDesign size={20} name="search1" color="#333" />
+      <AntDesign size={20} name="filter" color="#333" onPress={onFilterPress} />
     </View>
   );
 };
@@ -79,10 +82,90 @@ export default function Search() {
     setSearchString,
   } = useFeedSearch();
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [sort, setSort] = useState("viral");
+  const [window, setWindow] = useState("all");
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={{ ...globalStyles.container }}>
-        <SearchBar onValidate={setSearchString} />
+        <Modal
+          isVisible={modalOpen}
+          onBackButtonPress={() => setModalOpen(false)}
+          onBackdropPress={() => setModalOpen(false)}
+        >
+          <View
+            style={{ backgroundColor: "#fff", padding: 16, borderRadius: 10 }}
+          >
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <Text style={{ ...globalStyles.titleText, color: "#333" }}>
+                Search filters
+              </Text>
+              <AntDesign
+                size={20}
+                name="closecircleo"
+                color="#333"
+                onPress={() => setModalOpen(false)}
+              />
+            </View>
+
+            <View>
+              <Text
+                style={{
+                  ...globalStyles.titleText,
+                  color: "#333",
+                  fontSize: 16,
+                  marginTop: 16,
+                }}
+              >
+                Sort
+              </Text>
+              <Picker
+                style={{ backgroundColor: "#eee" }}
+                selectedValue={sort}
+                onValueChange={(itemValue, itemIndex) => setSort(itemValue)}
+              >
+                <Picker.Item label="Time" value="time" />
+                <Picker.Item label="Viral" value="viral" />
+                <Picker.Item label="Top" value="top" />
+              </Picker>
+
+              <Text
+                style={{
+                  ...globalStyles.titleText,
+                  color: "#333",
+                  fontSize: 16,
+                  marginTop: 16,
+                }}
+              >
+                Window
+              </Text>
+              <Picker
+                style={{ backgroundColor: "#eee" }}
+                selectedValue={window}
+                onValueChange={(itemValue, itemIndex) => setWindow(itemValue)}
+              >
+                <Picker.Item label="All" value="all" />
+                <Picker.Item label="Day" value="day" />
+                <Picker.Item label="Week" value="week" />
+                <Picker.Item label="Month" value="month" />
+                <Picker.Item label="Year" value="year" />
+              </Picker>
+            </View>
+          </View>
+        </Modal>
+        <SearchBar
+          onValidate={setSearchString}
+          onFilterPress={() => setModalOpen(true)}
+          sort={sort}
+          window={window}
+        />
         {loading ? (
           <ActivityIndicator
             size={60}

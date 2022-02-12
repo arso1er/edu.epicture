@@ -46,9 +46,16 @@ import { getAuthToken } from "../components/context/UserContext";
 export async function searchGallery(query, page) {
   const token = await getAuthToken();
 
+  const queryParts = query.split("|");
+
+  // console.log(
+  //   `https://api.imgur.com/3/gallery/search${queryParts[0]}/${page}?q=${queryParts[1]}`
+  // );
+
   const config = {
     method: "get",
-    url: `https://api.imgur.com/3/gallery/search/viral/all/${page}?q=${query}`,
+    // url: `https://api.imgur.com/3/gallery/search/viral/all/${page}?q=${query}`,
+    url: `https://api.imgur.com/3/gallery/search${queryParts[0]}/${page}?q=${queryParts[1]}`,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
