@@ -81,7 +81,7 @@ export default function Search() {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={globalStyles.container}>
+      <View style={{ ...globalStyles.container }}>
         <SearchBar onValidate={setSearchString} />
         {loading ? (
           <ActivityIndicator

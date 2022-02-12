@@ -192,6 +192,7 @@ export default function PhotoDetailsScreen({ route }) {
   //     </View>
   //   );
   // }
+  if (!data) return null;
 
   return (
     <View style={{ height: "100%" }}>

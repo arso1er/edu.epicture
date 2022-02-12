@@ -255,7 +255,7 @@ const BigPictureCard = ({
         </TouchableOpacity>
         <TouchableOpacity
           style={{ padding: 5, flexDirection: "row", alignItems: "center" }}
-          onPress={() => alert("comment")}
+          // onPress={() => alert("comment")}
         >
           <CommentPicto
             strokeWidth={2}

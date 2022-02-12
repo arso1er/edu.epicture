@@ -4,9 +4,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export async function getAuthToken() {
   const storageVal = await AsyncStorage.getItem("currentUser");
   const user = JSON.parse(storageVal);
-  return user?.access_token || "?";
+  return user?.access_token || "";
 
   // return SecureStore.getItemAsync(AUTH_CLIENT_ID || "?");
+}
+export async function getUsername() {
+  const storageVal = await AsyncStorage.getItem("currentUser");
+  const user = JSON.parse(storageVal);
+  return user?.account_username || "";
 }
 
 export const UserContext = createContext();

@@ -1,13 +1,11 @@
 import axios from "axios";
-import { Button, Text, View, FlatList } from "react-native";
+import { Text, View, FlatList } from "react-native";
 import { Card, ActivityIndicator, Colors } from "react-native-paper";
 import { globalStyles } from "../styles/global";
 import { useEffect, useState } from "react";
 import { IMGUR_API_CLIENT_ID } from "@env";
 
-export default function Home(props) {
-  const { navigation } = props;
-
+export default function Home() {
   const [topImages, setTopImages] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -35,19 +33,6 @@ export default function Home(props) {
       })
       .then(() => setLoading(false));
   }, []);
-  const imgs = [
-    {
-      link: "https://i.imgur.com/3OurGIX.jpg",
-      id: "w0Dyd0L",
-      title:
-        "My cats think the guenia pigs are theirs. (No worries the cats cannot get into this cage)",
-    },
-    {
-      link: "https://i.imgur.com/2TrPXKT.jpg",
-      id: "2TrPXKT",
-      title: "Sebastian the pasta thief",
-    },
-  ];
 
   return (
     <View style={{ ...globalStyles.container }}>
@@ -74,11 +59,11 @@ export default function Home(props) {
                   <Card style={{ marginBottom: 12 }}>
                     <Card.Title title={item.title} />
                     <Card.Cover source={{ uri: item.link }} />
-                    <Card.Actions>
+                    {/* <Card.Actions>
                       <Text style={{ ...globalStyles.regularText }}>
                         {item.views} views
                       </Text>
-                    </Card.Actions>
+                    </Card.Actions> */}
                   </Card>
                 );
               } else {
@@ -86,11 +71,11 @@ export default function Home(props) {
                   <Card style={{ marginBottom: 12 }}>
                     <Card.Title title={item.title} />
                     <Card.Cover source={{ uri: item.images[0].link }} />
-                    <Card.Actions>
+                    {/* <Card.Actions>
                       <Text style={{ ...globalStyles.regularText }}>
                         {item.views} views
                       </Text>
-                    </Card.Actions>
+                    </Card.Actions> */}
                   </Card>
                 );
               }
@@ -98,11 +83,6 @@ export default function Home(props) {
           />
         )}
       </View>
-
-      {/* <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("PhotoDetails")}
-      /> */}
     </View>
   );
 }

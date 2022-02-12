@@ -16,6 +16,7 @@ import HomeScreen from "./screens/home";
 import PhotoDetailsScreen from "./screens/photoDetails";
 import LoginScreen from "./screens/login";
 import SearchScreen from "./screens/search";
+import FavoritesScreen from "./screens/favorites";
 
 import { UserProvider } from "./components/context/UserContext";
 import { GlobalSnackProvider } from "./components/shared/snack/snackContext";
@@ -55,6 +56,7 @@ export default function App() {
               />
               <Stack.Screen name="Login" component={LoginScreen} />
               <Stack.Screen name="Search" component={SearchScreen} />
+              <Stack.Screen name="Favorites" component={FavoritesScreen} />
             </Stack.Navigator>
           </NavigationContainer>
           <GlobalSnack />
