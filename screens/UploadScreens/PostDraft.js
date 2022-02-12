@@ -83,6 +83,7 @@ export default function PostDraft({ route }) {
           navigation.navigate({ key: history[0].key });
         })
         .catch((err) => {
+          // console.log(err);
           console.log(err?.response?.data);
           setLoading(false);
         });

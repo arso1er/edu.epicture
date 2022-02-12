@@ -76,7 +76,7 @@ export async function getUserSubmissions() {
 
   const config = {
     method: "get",
-    url: `https://api.imgur.com/3/account/${username}/submissions`,
+    url: `https://api.imgur.com/3/account/${username}/images`, // submissions
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
@@ -88,6 +88,7 @@ export async function getUserSubmissions() {
 
   ret.data.data.forEach((item) =>
     res.push({
+      deletehash: item.deletehash,
       id: item.id,
       favorite: item.favorite,
       ups: item.ups,
