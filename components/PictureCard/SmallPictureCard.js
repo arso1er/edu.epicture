@@ -158,7 +158,7 @@ const SmallPictureCard = ({
               height={20}
             />
             <Text style={{ color: "#8e9094" }}>
-              {ups + (voted ? 1 : 0)} points
+              {(ups || 0) + (voted ? 1 : 0)} points
             </Text>
           </View>
           <TouchableOpacity onPress={handleSuppress}>

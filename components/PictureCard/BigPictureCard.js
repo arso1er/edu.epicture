@@ -250,7 +250,7 @@ const BigPictureCard = ({
               fontSize: 12,
             }}
           >
-            {ups + (voted ? 1 : 0)}
+            {(ups || 0) + (voted ? 1 : 0)}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

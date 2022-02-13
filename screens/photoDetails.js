@@ -153,8 +153,14 @@ export default function PhotoDetailsScreen({ route }) {
 
   useEffect(() => {
     (async () => {
-      const ret = await getGalleryComments(data.id);
-      setComments(ret);
+      try {
+        const ret = await getGalleryComments(data.id);
+        setComments(ret);
+      } catch (error) {
+        // console.log("====================================");
+        // console.log(error.response.data);
+        // console.log("====================================");
+      }
     })();
   }, [data.id]);
 
@@ -184,14 +190,6 @@ export default function PhotoDetailsScreen({ route }) {
     }
   };
 
-  // if (!data) {
-  //   return (
-  //     <View style={[styles.container, { alignItems: 'center' }]}>
-  //       <Skeleton style={{ marginTop: '6%' }} />
-  //       <Skeleton style={{ marginTop: '6%' }} />
-  //     </View>
-  //   );
-  // }
   if (!data) return null;
 
   return (
@@ -290,7 +288,7 @@ export default function PhotoDetailsScreen({ route }) {
                   fontSize: 12,
                 }}
               >
-                {data.ups + (voted ? 1 : 0)}
+                {(data.ups || 0) + (voted ? 1 : 0)}
               </Text>
             </TouchableOpacity>
             {/* <TouchableOpacity
@@ -335,7 +333,7 @@ export default function PhotoDetailsScreen({ route }) {
                   fontSize: 12,
                 }}
               >
-                {data.favorite_count + (faved ? 1 : 0)}
+                {(data.favorite_count || 0) + (faved ? 1 : 0)}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
