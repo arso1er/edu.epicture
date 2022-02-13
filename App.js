@@ -19,6 +19,7 @@ import SearchScreen from "./screens/search";
 import FavoritesScreen from "./screens/favorites";
 import MyPostsScreen from "./screens/myPosts";
 import ProfileAboutScreen from "./screens/profileAboutScreen";
+import ProfileSettingsScreen from "./screens/profileSettingsScreen";
 
 import UploadScreen from "./screens/upload";
 import CameraScreen from "./screens/UploadScreens/Camera";
@@ -84,6 +85,11 @@ export default function App() {
                 name="About"
                 options={{ title: "About me" }}
                 component={ProfileAboutScreen}
+              />
+              <Stack.Screen
+                name="Settings"
+                options={{ title: "Settings" }}
+                component={ProfileSettingsScreen}
               />
             </Stack.Navigator>
           </NavigationContainer>

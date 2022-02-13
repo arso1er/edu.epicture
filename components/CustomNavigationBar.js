@@ -75,6 +75,13 @@ export default function CustomNavigationBar(props) {
                 <Menu.Item
                   onPress={() => {
                     closeMenu();
+                    navigation.navigate("Settings");
+                  }}
+                  title="Settings"
+                />
+                <Menu.Item
+                  onPress={() => {
+                    closeMenu();
                     navigation.navigate("About");
                   }}
                   title="About me"

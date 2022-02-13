@@ -161,23 +161,34 @@ export async function updateUserSettings(
   show_mature,
   newsletter_subscribed
 ) {
-  const data = new FormData();
+  // const data = new FormData();
   const token = await getAuthToken();
   const user = await getUsername();
 
-  data.append("bio", bio);
-  data.append("username", username);
-  data.append("show_mature", show_mature);
-  data.append("messaging_enabled", messaging_enabled);
-  data.append("public_images", public_images);
-  data.append("newsletter_subscribed", newsletter_subscribed);
+  const dataObj = {
+    username,
+    bio,
+    show_mature,
+    messaging_enabled,
+    public_images,
+    newsletter_subscribed,
+  };
+  const data = Object.entries(dataObj)
+    .map((pair) => `${pair[0]}=${encodeURIComponent(pair[1])}`)
+    .join("&");
+  // data.append("bio", bio);
+  // data.append("username", username);
+  // data.append("show_mature", show_mature);
+  // data.append("messaging_enabled", messaging_enabled);
+  // data.append("public_images", public_images);
+  // data.append("newsletter_subscribed", newsletter_subscribed);
 
   const config = {
     method: "put",
     url: `https://api.imgur.com/3/account/${user}/settings`,
     headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
     },
     data,
   };
