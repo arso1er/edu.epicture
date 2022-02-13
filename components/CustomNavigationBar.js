@@ -75,6 +75,13 @@ export default function CustomNavigationBar(props) {
                 <Menu.Item
                   onPress={() => {
                     closeMenu();
+                    navigation.navigate("About");
+                  }}
+                  title="About me"
+                />
+                <Menu.Item
+                  onPress={() => {
+                    closeMenu();
                     logOut();
                     setSnackText("You were logged out!");
                     showGlobalSnack();

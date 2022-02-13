@@ -18,6 +18,7 @@ import LoginScreen from "./screens/login";
 import SearchScreen from "./screens/search";
 import FavoritesScreen from "./screens/favorites";
 import MyPostsScreen from "./screens/myPosts";
+import ProfileAboutScreen from "./screens/profileAboutScreen";
 
 import UploadScreen from "./screens/upload";
 import CameraScreen from "./screens/UploadScreens/Camera";
@@ -78,6 +79,11 @@ export default function App() {
                 name="MyPosts"
                 options={{ title: "My posts" }}
                 component={MyPostsScreen}
+              />
+              <Stack.Screen
+                name="About"
+                options={{ title: "About me" }}
+                component={ProfileAboutScreen}
               />
             </Stack.Navigator>
           </NavigationContainer>
