@@ -23,13 +23,16 @@ export default function CustomNavigationBar(props) {
 
       {!back ? (
         <>
-          <Appbar.Action
-            icon="magnify"
-            color="#fff"
-            onPress={() => {
-              navigation.navigate("Search");
-            }}
-          />
+          {user ? (
+            <Appbar.Action
+              icon="magnify"
+              color="#fff"
+              onPress={() => {
+                navigation.navigate("Search");
+              }}
+            />
+          ) : null}
+
           <Menu
             visible={visible}
             onDismiss={closeMenu}
